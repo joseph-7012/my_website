@@ -13,17 +13,34 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname));
 
-// ===== DATABASE (FIXED) =====
-// using Railway MYSQL_PUBLIC_URL
-const db = mysql.createConnection(process.env.DB_URL);
+// ===== DEBUG (IMPORTANT) =====
+console.log("DB_HOST:", process.env.DB_HOST);
 
-db.connect(err => {
+// ===== DATABASE (FIXED) =====
+const db = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
+  port: Number(process.env.DB_PORT)
+});
+
+db.connect((err) => {
   if (err) {
-    console.error("❌ DB ERROR:", err);
+    console.error("❌ DB CONNECTION FAILED:", err);
   } else {
-    console.log("✅ MySQL Connected");
+    console.log("✅ MYSQL CONNECTED");
   }
 });
+
+// ===== CREATE TABLE =====
+db.query(`
+  CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) UNIQUE,
+    password VARCHAR(255)
+  )
+`);
 
 // ===== EMAIL =====
 const transporter = nodemailer.createTransport({
@@ -33,15 +50,6 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASS
   }
 });
-
-// ===== CREATE TABLE =====
-db.query(`
-  CREATE TABLE IF NOT EXISTS users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(255),
-    password VARCHAR(255)
-  )
-`);
 
 // ===== SIGNUP =====
 app.post("/signup", (req, res) => {
