@@ -13,16 +13,17 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname));
 
-// ===== DEBUG (IMPORTANT) =====
-console.log("DB_HOST:", process.env.DB_HOST);
+// ===== DEBUG =====
+console.log("HOST USED:", process.env.DB_HOST);
+console.log("PORT USED:", process.env.DB_PORT);
 
-// ===== DATABASE (FIXED) =====
+// ===== DATABASE (FINAL FIX) =====
 const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
+  host: process.env.DB_HOST || "nozomi.proxy.rlwy.net",
+  user: process.env.DB_USER || "root",
   password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-  port: Number(process.env.DB_PORT)
+  database: process.env.DB_NAME || "railway",
+  port: Number(process.env.DB_PORT) || 10996,
 });
 
 db.connect((err) => {
