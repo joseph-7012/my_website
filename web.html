@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manalel Agro Traders | Premium Cattle Feed & Livestock</title>
+  <link rel="stylesheet" href="webstyle.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">MANALEL<span>AGRO</span></div>
+  <nav id="main-nav">
+    <a href="javascript:void(0)" class="nav-link active" onclick="showPage('home', this)">Home</a>
+    <a href="javascript:void(0)" class="nav-link" onclick="showPage('orders', this)">Orders</a>
+    <a href="javascript:void(0)" class="nav-link" onclick="showPage('contact', this)">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section id="home" class="page active">
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Trusted Partners for<br><span>Cattle Feed & Livestock</span></h1>
+        <p>Providing quality organic feed and high-breed livestock from Tamil Nadu to the heart of Kerala.</p>
+        <button class="btn-primary" onclick="showPage('orders')">Place an Inquiry</button>
+      </div>
+    </div>
+
+    <div class="text-section">
+      <div class="container">
+      </div>
+    </div>
+
+    <div class="slider-container">
+      <div class="slider">
+        <img id="slide" src="https://images.unsplash.com/photo-1601758123927-196d5f3f5d1b" alt="Livestock">
+        <div class="slider-nav">
+          <button class="arrow prev" onclick="prevSlide()">❮</button>
+          <button class="arrow next" onclick="nextSlide()">❯</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="orders" class="page">
+    <div class="hero small">
+      <h1>Product Inquiry</h1>
+    </div>
+
+    <div class="form-container">
+      <div class="form-card">
+        <h2>Order Details</h2>
+        <div class="input-group">
+          <input type="text" id="name" placeholder="Full Name" required>
+          <input type="tel" id="phone" placeholder="Phone Number" required>
+          <textarea id="order" placeholder="Details (e.g., 50kg Organic Feed, 2 Buffalo Calves)" rows="5" required></textarea>
+          <button id="submit-btn" onclick="sendOrder()">Submit Order</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="page">
+    <div class="hero small">
+      <h1>Contact Us</h1>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="icon">📍</div>
+        <h3>Our Location</h3>
+        <p>Payyavoor, Kannur<br>Kerala, India</p>
+      </div>
+      <div class="contact-card">
+        <div class="icon">📞</div>
+        <h3>Direct Line</h3>
+        <p>+91 94964 44583<br>+91 96458 61583</p>
+      </div>
+      <div class="contact-card">
+        <div class="icon">✉️</div>
+        <h3>Email Support</h3>
+        <p>mejosephjophy@gmail.com</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2026 Manalel Agro Traders. All rights reserved.</p>
+</footer>
+
+<script src="webscript.js"></script>
+</body>
+</html>

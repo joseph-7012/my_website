@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Outfit', sans-serif;
+  /* DARK LUXURY GRADIENT */
+  background: radial-gradient(circle at top left, #1a1a1a, #000);
+  background-color: #000;
+  overflow: hidden;
+}
+
+/* THE LUXE CARD */
+.container {
+  width: 380px;
+  padding: 48px 40px;
+  border-radius: 32px;
+  text-align: center;
+  position: relative;
+
+  /* AMBER GLASS EFFECT */
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 193, 7, 0.1); /* Subtle Gold Border */
+
+  color: #fff;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+  animation: fadeIn 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* TYPOGRAPHY */
+h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  background: linear-gradient(to right, #ffdf8e, #e3a61d);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p.subtitle {
+  color: #888;
+  font-size: 15px;
+  margin-bottom: 40px;
+}
+
+/* FLOATING INPUT STYLE */
+.input-wrapper {
+  margin-bottom: 24px;
+  position: relative;
+}
+
+input {
+  width: 100%;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:focus {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: #e3a61d;
+  box-shadow: 0 0 20px rgba(227, 166, 29, 0.1);
+}
+
+/* THE "GOLDEN" BUTTON */
+button {
+  width: 100%;
+  padding: 16px;
+  margin-top: 10px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  
+  background: #e3a61d;
+  color: #000;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: #ffdf8e;
+  transform: scale(1.02);
+  box-shadow: 0 10px 30px rgba(227, 166, 29, 0.3);
+}
+
+/* SEPARATION FOR SIGN UP */
+.footer-section {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-section span {
+  color: #666;
+  font-size: 14px;
+}
+
+.footer-section a {
+  color: #e3a61d;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 8px;
+  transition: 0.3s;
+}
+
+.footer-section a:hover {
+  text-shadow: 0 0 10px rgba(227, 166, 29, 0.5);
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
