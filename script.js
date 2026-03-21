@@ -1,5 +1,4 @@
-const BACKEND_URL = "https://my-website-zrv5.onrender.com"; 
-// ✅ FIXED (no localhost)
+const BACKEND_URL = "https://my-website-zrv5.onrender.com";
 
 // ================= SIGNUP =================
 async function signup() {
@@ -17,9 +16,6 @@ async function signup() {
 
     const data = await res.text();
     alert(data);
-
-    document.getElementById("username").value = "";
-    document.getElementById("password").value = "";
 
   } catch (error) {
     alert("Server not connected");
@@ -42,7 +38,7 @@ async function login() {
 
     const data = await res.json();
 
-    if (data.success) {
+    if (data.success === true) {
       window.location.href = "portfolio.html";
     } else {
       alert("Invalid credentials");
