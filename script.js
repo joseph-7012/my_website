@@ -1,8 +1,10 @@
+const BACKEND_URL = "http://localhost:5000"; // change later
+
 async function signup() {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
 
-  const res = await fetch("http://localhost:5000/signup", {
+  const res = await fetch(`${BACKEND_URL}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -13,16 +15,16 @@ async function signup() {
   const data = await res.text();
   alert(data);
 
-  // clear fields
   document.getElementById("username").value = "";
   document.getElementById("password").value = "";
 }
 
 async function login() {
+  alert("button working");
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
 
-  const res = await fetch("http://localhost:5000/login", {
+  const res = await fetch(`${BACKEND_URL}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -32,7 +34,7 @@ async function login() {
 
   const data = await res.json();
 
-  if (data.message === "Login successful") {
+  if (data.success) {
     window.location.href = "portfolio.html";
   } else {
     alert("Invalid credentials");
