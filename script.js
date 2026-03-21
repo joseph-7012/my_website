@@ -1,4 +1,4 @@
-const BACKEND_URL = "https://my-website-zrv5.onrender.com";
+const BACKEND_URL = window.location.origin;
 
 // ================= SIGNUP =================
 async function signup() {
