@@ -1,4 +1,4 @@
-const BACKEND_URL = window.location.origin;
+// NO BACKEND_URL NEEDED
 
 // ================= SIGNUP =================
 async function signup() {
@@ -6,7 +6,7 @@ async function signup() {
   const password = document.getElementById("password").value;
 
   try {
-    const res = await fetch(`${BACKEND_URL}/signup`, {
+    const res = await fetch("/signup", {   // ✅ FIXED
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -17,11 +17,8 @@ async function signup() {
     const data = await res.text();
     alert(data);
 
-    document.getElementById("username").value = "";
-    document.getElementById("password").value = "";
-
   } catch (error) {
-    alert("Server not connected");
+    alert("Server waking up... try again in 20 seconds");
   }
 }
 
@@ -31,7 +28,7 @@ async function login() {
   const password = document.getElementById("password").value;
 
   try {
-    const res = await fetch(`${BACKEND_URL}/login`, {
+    const res = await fetch("/login", {   // ✅ FIXED
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -48,6 +45,6 @@ async function login() {
     }
 
   } catch (error) {
-    alert("Server not connected");
+    alert("Server waking up... try again in 20 seconds");
   }
 }
