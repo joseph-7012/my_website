@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joseph Jophy | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;900&family=Space+Grotesk:wght@300;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #d4ff00; /* Neon Lime/Agro Green - Very modern with black */
+            --bg: #0a0a0a;
+            --text-muted: #888;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg);
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .main {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+        }
+
+        /* LEFT IMAGE SECTION */
+        .left {
+            width: 45%;
+            position: relative;
+            overflow: hidden;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .left img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%) brightness(0.8);
+            transition: 1s ease;
+        }
+
+        .left:hover img {
+            filter: grayscale(0%) brightness(1);
+            transform: scale(1.05);
+        }
+
+        /* Overlay Gradient for Image */
+        .left::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 30%;
+            background: linear-gradient(to top, var(--bg), transparent);
+        }
+
+        /* RIGHT CONTENT SECTION */
+        .right {
+            width: 55%;
+            padding: 10% 8%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: radial-gradient(circle at 90% 10%, #1a1a1a 0%, #0a0a0a 100%);
+        }
+
+        .label {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: block;
+            animation: slideIn 0.8s ease forwards;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(40px, 6vw, 80px);
+            line-height: 0.9;
+            margin-bottom: 20px;
+            animation: slideIn 1s ease forwards;
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: 300;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            animation: slideIn 1.2s ease forwards;
+        }
+
+        /* BUSINESS CTA */
+        .business {
+            position: relative;
+            background: transparent;
+            color: white;
+            padding: 18px 30px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            width: fit-content;
+            margin-bottom: 50px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            overflow: hidden;
+        }
+
+        .business:hover {
+            border-color: var(--accent);
+            color: #000;
+            background: var(--accent);
+            transform: scale(1.05);
+        }
+
+        /* SKILLS GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 12px;
+            max-width: 450px;
+            animation: slideIn 1.4s ease forwards;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-align: center;
+            transition: 0.3s;
+            color: var(--text-muted);
+        }
+
+        .card:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* ANIMATIONS */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            .main { flex-direction: column; height: auto; }
+            .left, .right { width: 100%; }
+            .left { height: 400px; }
+            .right { padding: 50px 30px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="left">
+            <img src="myphoto.jpg" alt="Joseph Jophy">
+        </div>
+
+        <div class="right">
+            <span class="label">Portfolio</span>
+            <h1>JOSEPH<br>JOPHY</h1>
+            <h2>Student & Proprietor at <b>Manalel Agro Traders</b></h2>
+
+            <div class="business" onclick="goToSite()">
+                <span>MANALEL AGRO TRADERS</span>
+                <span style="font-size: 20px;">→</span>
+            </div>
+
+            <p style="font-size: 12px; color: #555; margin-bottom: 10px; text-transform: uppercase; font-weight: 700;">Expertise</p>
+            <div class="grid">
+                <div class="card">HTML5</div>
+                <div class="card">CSS3</div>
+                <div class="card">JAVASCRIPT</div>
+                <div class="card">MYSQL</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+function goToSite() {
+    window.location.href = "web.html"; 
+}
+</script>
+
+</body>
+</html>
