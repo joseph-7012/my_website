@@ -1,5 +1,5 @@
-const BACKEND_URL = "http://localhost:5000"; 
-// ⚠️ AFTER DEPLOY change to your Render URL
+const BACKEND_URL = "https://my-website-zrv5.onrender.com"; 
+// ✅ FIXED (no localhost)
 
 // ================= SIGNUP =================
 async function signup() {
@@ -42,13 +42,13 @@ async function login() {
 
     const data = await res.json();
 
-    if (data.message === "Login successful") {
+    if (data.success) {
       window.location.href = "portfolio.html";
     } else {
       alert("Invalid credentials");
     }
 
   } catch (error) {
-    alert("Backend not running / not deployed");
+    alert("Server not connected");
   }
 }
