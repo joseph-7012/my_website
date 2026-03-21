@@ -13,14 +13,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname));
 
-// ===== DATABASE (RAILWAY) =====
-const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-  port: process.env.DB_PORT
-});
+// ===== DATABASE (FIXED) =====
+// using Railway MYSQL_PUBLIC_URL
+const db = mysql.createConnection(process.env.DB_URL);
 
 db.connect(err => {
   if (err) {
@@ -39,7 +34,7 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-// ===== CREATE TABLE (AUTO) =====
+// ===== CREATE TABLE =====
 db.query(`
   CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
