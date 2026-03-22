@@ -13,10 +13,11 @@ app.use(express.static(__dirname));
 
 // ================= DB =================
 const db = mysql.createConnection({
-  host: "localhost",
+  host: "caboose.proxy.rlwy.net",
   user: "root",
-  password: "",
-  database: "testdb"
+  password: "yJVjSIwEQqUmwtNazkNBFlcZhiLPjAQb",
+  database: "railway",    // ← your actual DB name
+  port: 23233
 });
 
 db.connect(err => {
