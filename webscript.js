@@ -1,5 +1,7 @@
+import { EnvironmentVariables } from "./environment_variables.js";
+
 // PAGE SWITCHING WITH NAV HIGHLIGHTING
-function showPage(pageId, element) {
+window.showPage = function showPage(pageId, element) {
   document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
 
   const targetPage = document.getElementById(pageId);
@@ -36,18 +38,18 @@ function showSlide() {
   }
 }
 
-function nextSlide() {
+window.nextSlide = function nextSlide() {
   index = (index + 1) % images.length;
   showSlide();
 }
 
-function prevSlide() {
+window.prevSlide = function prevSlide() {
   index = (index - 1 + images.length) % images.length;
   showSlide();
 }
 
 // SEND ORDER (FINAL FIXED)
-async function sendOrder() {
+window.sendOrder = async function sendOrder() {
   const name = document.getElementById("name").value;
   const phone = document.getElementById("phone").value;
   const order = document.getElementById("order").value;
@@ -63,18 +65,19 @@ async function sendOrder() {
   btn.disabled = true;
 
   try {
-    // ✅ FIXED (same server now)
-    const res = await fetch("/send-order", {
+
+    let response;
+
+    await fetch(EnvironmentVariables.SERVER.SEND_ORDER_URL, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, phone, order })
-    });
+    })
+      .then(res => response = res);
 
-    const msg = await res.text();
+    const msg = await response.text();
 
-    if (res.ok) {
+    if (response.ok) {
       alert("✅ " + msg);
       document.getElementById("name").value = "";
       document.getElementById("phone").value = "";
