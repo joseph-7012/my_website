@@ -13,11 +13,10 @@ app.use(express.static(__dirname));
 
 // ================= DB =================
 const db = mysql.createConnection({
-  host: "caboose.proxy.rlwy.net",
+  host: "localhost",
   user: "root",
-  password: "yJVjSIwEQqUmwtNazkNBFlcZhiLPjAQb",
-  database: "railway",    // ← your actual DB name
-  port: 23233
+  password: "",
+  database: "testdb"
 });
 
 db.connect(err => {
@@ -74,8 +73,8 @@ app.post("/send-order", async (req, res) => {
 
   try {
     await transporter.sendMail({
-      from: "mejosephjophy@gmail.com",
-      to: "mejosephjophy@gmail.com",
+      from: "manaleltraders.com@gmail.com",
+      to: "manaleltraders.com@gmail.com",
       subject: `🌾 NEW ORDER: ${name}`,
       text: `
 Name: ${name}
